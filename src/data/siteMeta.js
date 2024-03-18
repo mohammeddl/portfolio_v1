@@ -8,6 +8,7 @@ import logoFitness from '@/images/logos/fitness.png'
 import logoWiki from '@/images/logos/wiki.png'
 import logoWhisper from '@/images/logos/whisper.png'  
 import logoHiremee from '@/images/logos/hiremee.png'  
+import logoNexus from '@/images/logos/nexus.png'  
 const siteMeta = {
     title: "Brian Ketelsen",
     description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
@@ -96,12 +97,12 @@ export const projects = [
     logo: logoHiremee,
   },
   {
-    name: 'HireMe',
+    name: 'Nexus',
     description:
-      'HireMe wants to develop a job platform allowing users to find job opportunities and companies to publish their offers.',
-    skills: 'HTML-TAILWIND-JS-PHP LARAVEL-SQL',
-    link: { href: 'https://github.com/mohammeddl/HireMee.git', label: 'github.com' },
-    logo: logoHiremee,
+      'Nexus Crypto Wallet by offering a platform that provides real-time updates on cryptocurrency prices. This platform allows users to effectively manage their cryptocurrency portfolios and make secure transactions.',
+    skills: 'HTML-TAILWIND-JS-PHP-SQL',
+    link: { href: 'https://github.com/Sahtani/Cryptocurrency_management.git', label: 'github.com' },
+    logo: logoNexus,
   },
 
 
