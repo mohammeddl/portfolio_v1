@@ -4,7 +4,7 @@ import logoClarity from '@/images/logos/clarity.jpg'
 import logoMicrosoft from '@/images/logos/azure.svg'
 import logoXOR from '@/images/logos/xor.jpg'
 import logoVanilla from '@/images/logos/vanilla.svg'
-import logoFleek from '@/images/logos/fleeksvg.svg'
+import logoFitness from '@/images/logos/fitness.png'
 import logoUblue from '@/images/logos/ublue.png'
 
 import logoGolang from '@/images/logos/icons8-golang.svg'
@@ -58,11 +58,11 @@ const siteMeta = {
   ]
 export const projects = [
   {
-    name: 'Fleek',
+    name: 'Fitness',
     description:
-      'Install and manage all the tools you need to be productive.',
-    link: { href: 'https://getfleek.dev', label: 'getfleek.dev' },
-    logo: logoFleek,
+      'Our Gym Center is platform forinformation, programs and memberships ofgymnasium.',
+    link: { href: 'https://mohammeddl.github.io/projetFitness/', label: 'github.com' },
+    logo: logoFitness,
   },
   {
     name: 'Universal Blue',
@@ -91,20 +91,6 @@ export const projects = [
       'Custom commands as webhooks.',
     link: { href: 'https://github.com/bketelsen/captainhook', label: 'github.com' },
     logo: logoCaptainhook,
-  },
-  {
-    name: 'Kubernetes',
-    description:
-      'Production-Grade Container Scheduling and Management',
-    link: { href: 'https://github.com/kubernetes/kubernetes', label: 'github.com' },
-    logo: logoKubernetes,
-  },
-  {
-    name: 'Go',
-    description:
-      'Build fast, reliable, and efficient software at scale',
-    link: { href: 'https://go.dev', label: 'go.dev' },
-    logo: logoGolang,
   },
 
 
