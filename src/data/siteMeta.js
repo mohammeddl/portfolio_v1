@@ -3,7 +3,7 @@ import logoAmazon from '@/images/logos/aws.svg'
 import logoClarity from '@/images/logos/clarity.jpg'
 import logoMicrosoft from '@/images/logos/azure.svg'
 import logoXOR from '@/images/logos/xor.jpg'
-import logoVanilla from '@/images/logos/vanilla.svg'
+import logoEvanto from '@/images/logos/evanto.png'
 import logoFitness from '@/images/logos/fitness.png'
 import logoWiki from '@/images/logos/wiki.png'
 
@@ -74,14 +74,15 @@ export const projects = [
     logo: logoWiki,
   },
   {
-    name: 'Vanilla OS',
+    name: 'Evento',
     description:
-      'Vanilla OS is an immutable and atomic Ubuntu Linux-based Point Release distribution, that receives updates at the right time, neither before nor after, without sacrificing security and functionality.',
-    link: { href: 'https://vanillaos.org', label: 'vanillaos.org' },
-    logo: logoVanilla,
+      'The company "Evento" aims to develop an innovative platform dedicated to the management and reservation of event tickets. ',
+    skills: 'HTML-TAILWIND-JS-PHP LARAVEL-PGSQL-DOCKER',
+    link: { href: 'https://github.com/mohammeddl/WikiProjet.git', label: 'github.com' },
+    logo: logoEvanto,
   },
   {
-    name: 'Captain Hook',
+    name: 'Whisper',
     description:
       'Custom commands as webhooks.',
     link: { href: 'https://github.com/bketelsen/captainhook', label: 'github.com' },
