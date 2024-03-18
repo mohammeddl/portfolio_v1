@@ -7,9 +7,7 @@ import logoEvanto from '@/images/logos/evanto.png'
 import logoFitness from '@/images/logos/fitness.png'
 import logoWiki from '@/images/logos/wiki.png'
 
-import logoGolang from '@/images/logos/icons8-golang.svg'
-import logoKubernetes from '@/images/logos/kubernetes.svg'
-import logoCaptainhook from '@/images/logos/captainhook.svg'  
+import logoWhisper from '@/images/logos/whisper.png'  
 const siteMeta = {
     title: "Brian Ketelsen",
     description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
@@ -84,9 +82,10 @@ export const projects = [
   {
     name: 'Whisper',
     description:
-      'Custom commands as webhooks.',
-    link: { href: 'https://github.com/bketelsen/captainhook', label: 'github.com' },
-    logo: logoCaptainhook,
+      'The company "Whispere" wants to develop an innovative messaging application that will allow users to exchange messages, photos, documents.Custom commands as webhooks.',
+    skills: 'HTML-TAILWIND-JS-PHP LARAVEL-PGSQL-DOCKER',
+    link: { href: 'https://github.com/zinebMachrouh/Whisper.git', label: 'github.com' },
+    logo: logoWhisper,
   },
 
 
