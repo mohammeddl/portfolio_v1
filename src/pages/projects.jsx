@@ -18,7 +18,7 @@ function LinkIcon(props) {
 
 export default function Projects() {
   const headline = "Welcome to the heart of my portfolio"
-  const intro="where ideas come to life and code transforms into tangible solutions. Each project showcased here represents a blend of creativity, problem-solving, and technical expertise.!"
+  const intro="Where ideas come to life and code transforms into tangible solutions. Each project showcased here represents a blend of creativity, problem-solving, and technical expertise.!"
 
   return (
     <>

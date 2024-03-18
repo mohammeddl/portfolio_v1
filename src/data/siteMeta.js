@@ -10,9 +10,9 @@ import logoWhisper from '@/images/logos/whisper.png'
 import logoHiremee from '@/images/logos/hiremee.png'  
 import logoNexus from '@/images/logos/nexus.png'  
 const siteMeta = {
-    title: "Brian Ketelsen",
-    description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
-    copyright: "Brian Ketelsen, CC-BY-SA",
+    title: "Daali Mohammed",
+    description: "Daali Mohammed is a developer web.",
+    copyright: "Daali Mohammed",
     author: {
         name: "Daali mohammed",
         email: "daali.22.ss@gmail.com",
