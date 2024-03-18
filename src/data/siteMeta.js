@@ -5,7 +5,7 @@ import logoMicrosoft from '@/images/logos/azure.svg'
 import logoXOR from '@/images/logos/xor.jpg'
 import logoVanilla from '@/images/logos/vanilla.svg'
 import logoFitness from '@/images/logos/fitness.png'
-import logoUblue from '@/images/logos/ublue.png'
+import logoWiki from '@/images/logos/wiki.png'
 
 import logoGolang from '@/images/logos/icons8-golang.svg'
 import logoKubernetes from '@/images/logos/kubernetes.svg'
@@ -65,18 +65,11 @@ export const projects = [
     logo: logoFitness,
   },
   {
-    name: 'Universal Blue',
+    name: 'Wiki',
     description:
-      'Custom Operating System images based on Fedora.',
-    link: { href: 'https://ublue.it', label: 'Universal Blue' },
-    logo: logoUblue,
-  },
-  {
-    name: 'Bluefin',
-    description:
-      'The next generation Linux workstation. Built for cloud-native, using cloud-native.',
-    link: { href: 'https://projectbluefin.io', label: 'Bluefin' },
-    logo: logoUblue,
+      'Wiki an effective content management system, combined with a front office, to offer an exceptional user experience.',
+    link: { href: 'https://github.com/mohammeddl/WikiProjet.git', label: 'github.com' },
+    logo: logoWiki,
   },
   {
     name: 'Vanilla OS',
