@@ -15,15 +15,11 @@ const siteMeta = {
     description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
     copyright: "Brian Ketelsen, CC-BY-SA",
     author: {
-        name: "Brian Ketelsen",
-        email: "me@brian.dev",
-        twitter: "https://twitter.com/bketelsen",
-        mastodon: "https://tty0.social/@bketelsen",
-        instagram: "https://instagram.com/bketelsen",
-        github: "https://github.com/bketelsen",
-        linkedin: "https://linkedin.com/in/brianketelsen",
-        twitch: "https://twitch.tv/bketelsen",
-        youtube: "https://youtube.com/@bketelsen",
+        name: "Daali mohammed",
+        email: "daali.22.ss@gmail.com",
+        instagram: "https://instagram.com/mohammed_dl1",
+        github: "https://github.com/mohammeddl",
+        linkedin: "https://ma.linkedin.com/in/daali-mohammed-85736b271/",
     },
     siteUrl: "https://brian.dev"
 }

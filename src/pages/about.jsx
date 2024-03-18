@@ -94,7 +94,7 @@ export default function About() {
               <p>
                 <b>Containerization:</b> Knowledgeable in containerization techniques using Docker, enhancing deployment processes and scalability.
               </p>
-              <h3>Additional Technologies:</h3>
+              <h2>Additional Technologies:</h2>
               <p>
                 <b>UML :</b> Skilled in creating UML diagrams to visualize and communicate system designs effectively.
               </p>
@@ -108,12 +108,6 @@ export default function About() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href={siteMeta.author.twitter} icon={TwitterIcon}>
-                Follow on Twitter
-              </SocialLink>
-              <SocialLink href={siteMeta.author.mastodon} icon={MastodonIcon} className="mt-4">
-                Follow on Mastodon
-              </SocialLink>
               <SocialLink href={siteMeta.author.instagram} icon={InstagramIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
