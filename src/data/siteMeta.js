@@ -61,6 +61,7 @@ export const projects = [
     name: 'Fitness',
     description:
       'Our Gym Center is platform forinformation, programs and memberships ofgymnasium.',
+    skills: 'HTML-CSS-JS',
     link: { href: 'https://mohammeddl.github.io/projetFitness/', label: 'github.com' },
     logo: logoFitness,
   },
@@ -68,6 +69,7 @@ export const projects = [
     name: 'Wiki',
     description:
       'Wiki an effective content management system, combined with a front office, to offer an exceptional user experience.',
+    skills: 'HTML-TAILWIND-JS-PHP-SQL',
     link: { href: 'https://github.com/mohammeddl/WikiProjet.git', label: 'github.com' },
     logo: logoWiki,
   },
