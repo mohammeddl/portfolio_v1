@@ -6,8 +6,8 @@ import logoXOR from '@/images/logos/xor.jpg'
 import logoEvanto from '@/images/logos/evanto.png'
 import logoFitness from '@/images/logos/fitness.png'
 import logoWiki from '@/images/logos/wiki.png'
-
 import logoWhisper from '@/images/logos/whisper.png'  
+import logoHiremee from '@/images/logos/hiremee.png'  
 const siteMeta = {
     title: "Brian Ketelsen",
     description: "Brian Ketelsen is a developer advocate, keynote speaker, author, and open source practitioner.",
@@ -86,6 +86,22 @@ export const projects = [
     skills: 'HTML-TAILWIND-JS-PHP LARAVEL-PGSQL-DOCKER',
     link: { href: 'https://github.com/zinebMachrouh/Whisper.git', label: 'github.com' },
     logo: logoWhisper,
+  },
+  {
+    name: 'HireMe',
+    description:
+      'HireMe wants to develop a job platform allowing users to find job opportunities and companies to publish their offers.',
+    skills: 'HTML-TAILWIND-JS-PHP LARAVEL-SQL',
+    link: { href: 'https://github.com/mohammeddl/HireMee.git', label: 'github.com' },
+    logo: logoHiremee,
+  },
+  {
+    name: 'HireMe',
+    description:
+      'HireMe wants to develop a job platform allowing users to find job opportunities and companies to publish their offers.',
+    skills: 'HTML-TAILWIND-JS-PHP LARAVEL-SQL',
+    link: { href: 'https://github.com/mohammeddl/HireMee.git', label: 'github.com' },
+    logo: logoHiremee,
   },
 
 
