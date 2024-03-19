@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo';
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
+
 import siteMeta, { projects } from '@/data/siteMeta'
 function LinkIcon(props) {
   return (

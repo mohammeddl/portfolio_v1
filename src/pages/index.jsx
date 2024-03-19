@@ -44,7 +44,7 @@ export default function About() {
   return (
     <>
       <NextSeo
-        title="About - Brian Ketelsen"
+        title="About - Daali Mohammed"
         description={siteMeta.description}
         canonical="https://brian.dev/about"
         openGraph={{
