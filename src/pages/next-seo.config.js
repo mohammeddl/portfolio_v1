@@ -2,12 +2,12 @@ export default {
     openGraph: {
       type: 'website',
       locale: 'en_IE',
-      url: 'https://www.brian.dev/',
-      siteName: 'Brian Ketelsen',
+      url: '',
+      siteName: 'Daali mohammed',
     },
     twitter: {
-      handle: '@bketelsen',
-      site: '@bketelsen',
+      handle: '@mohammed',
+      site: '@mohammeddl',
       cardType: 'summary_large_image',
     },
   };
