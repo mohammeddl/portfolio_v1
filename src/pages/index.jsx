@@ -11,6 +11,7 @@ import {
   MastodonIcon
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/brian-head.jpg'
+import portraitImage2 from '@/images/3L3A0403.jpeg'
 import siteMeta from '@/data/siteMeta'
 import { NextSeo } from 'next-seo';
 
@@ -48,7 +49,7 @@ export default function About() {
           <div className="lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <Image
-                src={portraitImage}
+                src={portraitImage2}
                 alt=""
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="object-cover aspect-square rotate-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800"
