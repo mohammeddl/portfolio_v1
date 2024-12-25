@@ -56,6 +56,28 @@ export const resume = [
 ]
 export const projects = [
   {
+    name: 'Insurance',
+    description:
+      'The application aims to provide a smooth and intuitive user experience for managing insurance contracts.',
+    skills: 'JAVA-JEE-POSTGRESQL-DOCKER-SWAGGER',
+    link: {
+      href: 'https://github.com/mohammeddl/insurance.git',
+      label: 'github.com',
+    },
+    logo: "",
+  },
+  {
+    name: 'Memory-Game',
+    description:
+      'This is a classic memory game where the player must reproduce a sequence of colors in the correct order. With each level, the sequence gets longer, making the game more and more difficult.',
+    skills: 'ANGULAR',
+    link: {
+      href: 'https://memory-game-eight-umber.vercel.app/',
+      label: 'vercel.app',
+    },
+    logo: "",
+  },
+  {
     name: 'Fitness',
     description:
       'Our Gym Center is platform forinformation, programs and memberships ofgymnasium.',
