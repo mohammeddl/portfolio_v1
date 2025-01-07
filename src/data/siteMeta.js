@@ -175,12 +175,16 @@ export const projects = [
     name: 'cyberTeck',
     description:
       'The E-commerce project is a web application that allows users to browse, search, and purchase a variety of products online. The application offers a user-friendly and secure experience for online shopping, with features such as user authentication, cart management, order checkout, etc.',
-    skills: 'REACTJS-LARAVEL-PGSQL',
+    skills: 'REACTJS-LARAVEL-PGSQL-DOCKER',
     link: {
       href: 'https://github.com/mohammeddl/cyberTeck.git',
       label: 'github.com',
     },
     logo: cybertech,
+    style: {
+      width: '50px',
+      height: '50px',
+    },
   },
 ]
 
