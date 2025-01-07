@@ -8,6 +8,12 @@ import logoWiki from '@/images/logos/wiki.png'
 import logoWhisper from '@/images/logos/whisper.png'
 import logoHiremee from '@/images/logos/hiremee.png'
 import logoNexus from '@/images/logos/nexus.png'
+import insurance from '@/images/logos/insurance.png'
+import citronix from '@/images/logos/citronx.png'
+import memoryGame from '@/images/logos/memory_game.png'
+import employee from '@/images/logos/employee.png'
+import cybertech from '@/images/logos/cybertech.png'
+
 const siteMeta = {
   title: 'Daali Mohammed',
   description: 'Daali Mohammed is a developer web.',
@@ -64,7 +70,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/insurance.git',
       label: 'github.com',
     },
-    logo: "",
+    logo: insurance,
   },
   {
     name: 'Memory-Game',
@@ -75,7 +81,7 @@ export const projects = [
       href: 'https://memory-game-eight-umber.vercel.app/',
       label: 'vercel.app',
     },
-    logo: "",
+    logo: memoryGame,
   },
   {
     name: 'Fitness',
@@ -97,7 +103,18 @@ export const projects = [
       href: 'https://citronix.systems/swagger-ui/index.html',
       label: 'citronix.systems',
     },
-    logo: '',
+    logo: citronix,
+  },
+  {
+    name: 'Employee Management ',
+    description:
+      'Develop an employee management application, allowing users to view, add, edit, and delete employees.',
+    skills: 'ANGULAR-RxJS-TypeScript-localStorage',
+    link: {
+      href: 'https://employee-management-lime-zeta.vercel.app/employees',
+      label: 'vercel.app',
+    },
+    logo: employee,
   },
   {
     name: 'Wiki',
@@ -163,6 +180,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/cyberTeck.git',
       label: 'github.com',
     },
+    logo: cybertech,
   },
 ]
 
