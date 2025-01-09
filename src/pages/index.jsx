@@ -66,13 +66,13 @@ export default function About() {
               </p>
               <h2>Skills:</h2>
               <p>
-                <b>Frontend Development:</b> Proficient in HTML, CSS, JavaScript, and experienced in utilizing Tailwind CSS for efficient styling and layout.
+                <b>Frontend Development:</b> Proficient in HTML, CSS, JavaScript, React, Next, Angular .
               </p>
               <p>
-                <b>Backend Development:</b> Skilled in PHP and Laravel framework, proficient in building robust backend systems to power dynamic web applications.
+                <b>Backend Development:</b> Skilled in Java, PHP and Spring Boot framework, Laravel framework, proficient in building robust backend systems to power dynamic web applications.
               </p>
               <p>
-                <b>Database Management:</b> Experienced in database management using PgAdmin and PHPMyAdmin, ensuring efficient data storage and retrieval.
+                <b>Database Management:</b> Experienced in database management using PgAdmin and PHPMyAdmin, Mongodb, ensuring efficient data storage and retrieval.
               </p>
               <p>
                 <b>Containerization:</b> Knowledgeable in containerization techniques using Docker, enhancing deployment processes and scalability.
@@ -86,6 +86,9 @@ export default function About() {
               </p>
               <p>
                 <b>Jira/trello:</b>  Familiar with project management tools like Jira/trello for effective collaboration and task tracking.
+              </p>
+              <p>
+                <b>CI/CD:</b> Knowledgeable in CI/CD pipelines using Jenkins et Github Actions, ensuring efficient code integration and deployment.
               </p>
             </div>
           </div>
