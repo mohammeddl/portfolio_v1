@@ -13,6 +13,7 @@ import citronix from '@/images/logos/citronx.png'
 import memoryGame from '@/images/logos/memory_game.png'
 import employee from '@/images/logos/employee.png'
 import cybertech from '@/images/logos/cybertech.png'
+import fauget from '@/images/logos/fauget.png'
 
 const siteMeta = {
   title: 'Daali Mohammed',
@@ -90,9 +91,20 @@ export const projects = [
     skills: 'HTML-CSS-JS',
     link: {
       href: 'https://mohammeddl.github.io/projetFitness/',
-      label: 'github.com',
+      label: 'Fitness.com',
     },
     logo: logoFitness,
+  },
+  {
+    name: 'FaugetTravel',
+    description:
+      ' The platform offers a variety of travel packages, detailed itineraries, and user reviews to help travelers make informed decisions. ',
+      skills: 'HTML-CSS-JS',
+      link: {
+      href: 'https://mohammeddl.github.io/projetFauget/index.html',
+      label: 'fauget.com',
+    },
+    logo: fauget,
   },
   {
     name: 'Citronix ',
