@@ -14,6 +14,8 @@ import memoryGame from '@/images/logos/memory_game.png'
 import employee from '@/images/logos/employee.png'
 import cybertech from '@/images/logos/cybertech.png'
 import fauget from '@/images/logos/fauget.png'
+import recycleHub from '@/images/logos/recyclehub.png'
+import creativePrint from '@/images/logos/creativeprint.png'      
 
 const siteMeta = {
   title: 'Daali Mohammed',
@@ -63,6 +65,28 @@ export const resume = [
 ]
 export const projects = [
   {
+    name: 'RecycleHub',
+    description:
+      'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
+    skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
+    link: {
+      href: 'https://github.com/mohammeddl/RecycleHub',
+      label: 'github.com',
+    },
+    logo: recycleHub,
+  },
+    {
+    name: 'CreativePrint',
+    description:
+      'CreativePrint is a comprehensive print-on-demand platform enabling creators to design, customize, and sell custom products with automated production and delivery.',
+    skills: 'JAVA SPRING BOOT-REACT-TypeScript-DOCKER-PostgreSQL-TailwindCSS-Github Actions CI/CD',
+    link: {
+      href: 'https://github.com/mohammeddl/CreativePrint',
+      label: 'github.com',
+    },
+    logo: creativePrint,
+  },
+    {
     name: 'Insurance',
     description:
       'The application aims to provide a smooth and intuitive user experience for managing insurance contracts.',
