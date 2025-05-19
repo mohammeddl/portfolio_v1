@@ -70,8 +70,8 @@ export const projects = [
       'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
     skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
     link: {
-      href: 'https://github.com/mohammeddl/RecycleHub',
-      label: 'github.com',
+      href: 'https://recycle-hub-zeta.vercel.app/home',
+      label: 'recycleHub.com',
     },
     logo: recycleHub,
   },
