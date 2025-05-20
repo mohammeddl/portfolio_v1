@@ -8,8 +8,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
 
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
   const placeholderScreenshots = ['/api/placeholder/800/600', '/api/placeholder/800/600'];
-
-  // Utiliser les captures d'écran du projet ou des placeholders
   const screenshotsToUse = hasScreenshots ? project.screenshots : placeholderScreenshots;
 
   return (
@@ -39,7 +37,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white dark:bg-zinc-800 p-6 text-left align-middle shadow-xl transition-all">
-                {/* En-tête du modal */}
                 <div className="flex items-center justify-between mb-6">
                   <Dialog.Title as="h3" className="text-2xl font-bold leading-6 text-zinc-900 dark:text-zinc-100">
                     {project.name}
@@ -63,7 +60,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Carrousel à gauche */}
                   <div className="md:col-span-2">
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Aperçu du projet</h4>
