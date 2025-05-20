@@ -4,7 +4,7 @@ import Image from 'next/image';
 export function ImageCarousel({ images, projectName }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [isFullscreen, setIsFullscreen] = useState(false);
   
   useEffect(() => {
     setCurrentImageIndex(0);
@@ -38,6 +38,10 @@ export function ImageCarousel({ images, projectName }) {
     setIsLoading(true);
   };
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   // Si pas d'images, afficher un message
   if (!images || images.length === 0) {
     return (
@@ -47,8 +51,24 @@ export function ImageCarousel({ images, projectName }) {
     );
   }
 
+  const carouselClasses = isFullscreen 
+    ? "fixed inset-0 z-50 bg-black flex items-center justify-center" 
+    : "relative h-64 md:h-96 w-full rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-700";
+
   return (
-    <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-700">
+    <div className={carouselClasses}>
+      {/* Bouton de fermeture en mode plein écran */}
+      {isFullscreen && (
+        <button 
+          onClick={toggleFullscreen}
+          className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full flex items-center justify-center bg-white/70 dark:bg-zinc-800/70 text-zinc-800 dark:text-zinc-200 hover:bg-white dark:hover:bg-zinc-800 transition-colors shadow-lg"
+          aria-label="Fermer le plein écran"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      )}
      
       <div className="relative h-full w-full">
         {isLoading && (
@@ -57,14 +77,18 @@ export function ImageCarousel({ images, projectName }) {
           </div>
         )}
         <div className="relative h-full w-full">
-          <Image
-            src={images[currentImageIndex]}
-            alt={`Capture d'écran ${currentImageIndex + 1} de ${projectName}`}
-            fill
-            className={`object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-            onLoadingComplete={handleImageLoad}
-            unoptimized
-          />
+          {/* Correction ici : ajout des propriétés width et height */}
+          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <Image
+              src={images[currentImageIndex]}
+              alt={`Capture d'écran ${currentImageIndex + 1} de ${projectName}`}
+              layout="fill"
+              objectFit="contain"
+              className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+              onLoadingComplete={handleImageLoad}
+              unoptimized
+            />
+          </div>
         </div>
       </div>
 
@@ -107,12 +131,24 @@ export function ImageCarousel({ images, projectName }) {
           ))}
         </div>
       )}
-      
 
-      <div className="absolute top-4 right-4">
+      {/* Infos et bouton plein écran */}
+      <div className="absolute top-4 right-4 flex items-center space-x-2">
         <span className="px-2 py-1 text-xs font-medium bg-black/50 text-white rounded-md">
           {currentImageIndex + 1} / {images.length}
         </span>
+        
+        {!isFullscreen && (
+          <button 
+            onClick={toggleFullscreen}
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-white/70 dark:bg-zinc-800/70 text-zinc-800 dark:text-zinc-200 hover:bg-white dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Mode plein écran"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5m-5 6v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );

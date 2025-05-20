@@ -41,6 +41,25 @@ function MailIcon(props) {
   )
 }
 
+function DownloadIcon(props) {
+  return (
+    <svg 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      aria-hidden="true" 
+      {...props}
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  )
+}
+
 export default function About() {
   return (
     <>
@@ -58,7 +77,7 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Daali Mohammed. Full Stack Web Development, 
+              I'm Daali Mohammed. Full Stack Web Development, 
             </h1>
             <div className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
               <p>
@@ -110,6 +129,17 @@ export default function About() {
               >
                 {siteMeta.author.email}
               </SocialLink>
+              
+              <li className="flex mt-4">
+                <a
+                  href="/CV_Daali_Mohammed.pdf"
+                  download
+                  className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+                >
+                  <DownloadIcon className="flex-none w-6 h-6 transition stroke-zinc-500 group-hover:stroke-teal-500" />
+                  <span className="ml-4">Download My Resume</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

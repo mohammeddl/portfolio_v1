@@ -17,15 +17,9 @@ import fauget from '@/images/logos/fauget.png'
 import recycleHub from '@/images/logos/recyclehub.png'
 import creativePrint from '@/images/logos/creativeprint.png'      
 
-// Dummy screenshots arrays since we don't have actual screenshots yet
-const placeholderScreenshots = [
-  '/api/placeholder/800/600',
-  '/api/placeholder/800/600' 
-];
-
 const siteMeta = {
   title: 'Daali Mohammed',
-  description: 'Daali Mohammed is a web developer.',
+  description: 'Daali Mohammed is a developer web.',
   copyright: 'Daali Mohammed',
   author: {
     name: 'Daali mohammed',
@@ -34,9 +28,14 @@ const siteMeta = {
     github: 'https://github.com/mohammeddl',
     linkedin: 'https://ma.linkedin.com/in/daali-mohammed-85736b271/',
   },
-  siteUrl: 'https://brian.dev',
+  siteUrl: 'https://med.dev',
 }
 
+const placeholderScreenshots = [
+  '/api/placeholder/800/600?text=Capture%20Écran%201',
+  '/api/placeholder/800/600?text=Capture%20Écran%202',
+  '/api/placeholder/800/600?text=Capture%20Écran%203' 
+];
 export const resume = [
   {
     company: 'Amazon',
@@ -70,22 +69,25 @@ export const resume = [
     end: '2014',
   },
 ]
-
 export const projects = [
-  {
-    name: 'RecycleHub',
-    description:
-      'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
-    skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
-    link: {
-      href: 'https://recycle-hub-zeta.vercel.app/home',
-      label: 'recycleHub.com',
-    },
-    repository: 'https://github.com/mohammeddl/RecycleHub',
-    logo: recycleHub,
-    screenshots: placeholderScreenshots,
+ {
+  name: 'RecycleHub',
+  description:
+    'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
+  skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
+  link: {
+    href: 'https://recycle-hub-zeta.vercel.app/home',
+    label: 'recycleHub.com',
   },
-  {
+  repository: 'https://github.com/mohammeddl/RecycleHub',
+  logo: recycleHub,
+  screenshots: [
+    '/api/placeholder/800/600?text=RecycleHub%20Dashboard',
+    '/api/placeholder/800/600?text=RecycleHub%20Profile',
+    '/api/placeholder/800/600?text=RecycleHub%20Map'
+  ],
+},
+    {
     name: 'CreativePrint',
     description:
       'CreativePrint is a comprehensive print-on-demand platform enabling creators to design, customize, and sell custom products with automated production and delivery.',
@@ -94,11 +96,9 @@ export const projects = [
       href: 'https://github.com/mohammeddl/CreativePrint',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/CreativePrint',
     logo: creativePrint,
-    screenshots: placeholderScreenshots,
   },
-  {
+    {
     name: 'Insurance',
     description:
       'The application aims to provide a smooth and intuitive user experience for managing insurance contracts.',
@@ -107,9 +107,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/insurance.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/insurance.git',
     logo: insurance,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Memory-Game',
@@ -120,9 +118,7 @@ export const projects = [
       href: 'https://memory-game-eight-umber.vercel.app/',
       label: 'vercel.app',
     },
-    repository: 'https://github.com/mohammeddl/memory-game',
     logo: memoryGame,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Fitness',
@@ -133,22 +129,18 @@ export const projects = [
       href: 'https://mohammeddl.github.io/projetFitness/',
       label: 'Fitness.com',
     },
-    repository: 'https://github.com/mohammeddl/projetFitness',
     logo: logoFitness,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'FaugetTravel',
     description:
       ' The platform offers a variety of travel packages, detailed itineraries, and user reviews to help travelers make informed decisions. ',
-    skills: 'HTML-CSS-JS',
-    link: {
+      skills: 'HTML-CSS-JS',
+      link: {
       href: 'https://mohammeddl.github.io/projetFauget/index.html',
       label: 'fauget.com',
     },
-    repository: 'https://github.com/mohammeddl/projetFauget',
     logo: fauget,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Citronix ',
@@ -159,9 +151,7 @@ export const projects = [
       href: 'https://citronix.systems/swagger-ui/index.html',
       label: 'citronix.systems',
     },
-    repository: 'https://github.com/mohammeddl/citronix',
     logo: citronix,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Employee Management ',
@@ -172,9 +162,7 @@ export const projects = [
       href: 'https://employee-management-lime-zeta.vercel.app/employees',
       label: 'vercel.app',
     },
-    repository: 'https://github.com/mohammeddl/employee-management',
     logo: employee,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Wiki',
@@ -185,9 +173,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/WikiProjet.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/WikiProjet.git',
     logo: logoWiki,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Evento',
@@ -198,9 +184,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/WikiProjet.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/Evento',
     logo: logoEvanto,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Whisper',
@@ -211,9 +195,7 @@ export const projects = [
       href: 'https://github.com/zinebMachrouh/Whisper.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/zinebMachrouh/Whisper.git',
     logo: logoWhisper,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'HireMe',
@@ -224,9 +206,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/HireMee.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/HireMee.git',
     logo: logoHiremee,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'Nexus',
@@ -237,9 +217,7 @@ export const projects = [
       href: 'https://github.com/Sahtani/Cryptocurrency_management.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/Sahtani/Cryptocurrency_management.git',
     logo: logoNexus,
-    screenshots: placeholderScreenshots,
   },
   {
     name: 'cyberTeck',
@@ -250,9 +228,7 @@ export const projects = [
       href: 'https://github.com/mohammeddl/cyberTeck.git',
       label: 'github.com',
     },
-    repository: 'https://github.com/mohammeddl/cyberTeck.git',
     logo: cybertech,
-    screenshots: placeholderScreenshots,
     style: {
       width: '50px',
       height: '50px',
