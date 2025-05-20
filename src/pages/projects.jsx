@@ -1,11 +1,13 @@
-import Image from 'next/future/image'
+import { useState } from 'react'
+import Image from 'next/image'
 import { NextSeo } from 'next-seo';
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-
+import { ProjectModal } from '@/components/ProjectModal'
 
 import siteMeta, { projects } from '@/data/siteMeta'
+
 function LinkIcon(props) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -18,29 +20,42 @@ function LinkIcon(props) {
 }
 
 export default function Projects() {
-  const headline = "Welcome to the heart of my portfolio"
-  const intro="Where ideas come to life and code transforms into tangible solutions. Each project showcased here represents a blend of creativity, problem-solving, and technical expertise.!"
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeProjectModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const headline = "Bienvenue dans mon portfolio"
+  const intro = "Où les idées prennent vie et le code se transforme en solutions tangibles. Chaque projet présenté ici représente un mélange de créativité, de résolution de problèmes et d'expertise technique."
 
   return (
     <>
-    <NextSeo
-      title="Projects - Daali mohammed"
-      description={siteMeta.description}
-      canonical="https://brian.dev/projects"
-      openGraph={{
-        url: 'https://brian.dev/projects',
-        images: [
-          {
-            url: `https://og.brian.dev/api/og?title=Projects&desc=${headline}`,
-            width: 1200,
-            height: 600,
-            alt: 'Og Image Alt',
-            type: 'image/jpeg',
-          }
-        ],
-        siteName: 'brian.dev',
-      }}
-    />
+      <NextSeo
+        title="Projets - Daali Mohammed"
+        description={siteMeta.description}
+        canonical="https://brian.dev/projects"
+        openGraph={{
+          url: 'https://brian.dev/projects',
+          images: [
+            {
+              url: `https://og.brian.dev/api/og?title=Projects&desc=${headline}`,
+              width: 1200,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            }
+          ],
+          siteName: 'brian.dev',
+        }}
+      />
+      
       <SimpleLayout
         title={headline}
         intro={intro}
@@ -51,28 +66,67 @@ export default function Projects() {
         >
           {projects.map((project) => (
             <Card as="li" key={project.name}>
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                <Image
-                  src={project.logo}
-                  alt=""
-                  className="h-8 w-8 rounded-lg"
-                  unoptimized
-                />
-              </div>
-              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                <Card.Link href={project.link.href}>{project.name}</Card.Link>
-              </h2>
-              <Card.Description>{project.description}</Card.Description>
-              <Card.Description>{project.skills}</Card.Description>
-              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-                <LinkIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2">{project.link.label}</span>
-              </p>
-            </Card>
+              <div 
+                className="project-card h-full flex flex-col relative group cursor-pointer transition-all duration-300 hover:shadow-xl dark:hover:shadow-zinc-800/50 rounded-2xl overflow-hidden"
+                onClick={() => openProjectModal(project)}
+              >
+                {/* Overlay avec effet */}
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-500/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
+                  <button className="bg-white text-teal-700 dark:bg-zinc-800 dark:text-teal-400 font-medium px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
+                    Voir le projet
+                  </button>
+                </div>
 
+                {/* Contenu de la carte */}
+                <div className="p-4 flex flex-col h-full z-10 group-hover:z-0">
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                    <Image
+                      src={project.logo}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 rounded-lg"
+                      unoptimized
+                    />
+                  </div>
+                  <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                    {project.name}
+                  </h2>
+                  <Card.Description className="flex-grow line-clamp-3">
+                    {project.description}
+                  </Card.Description>
+
+                  {/* Étiquettes de compétences */}
+                  <div className="mt-4 flex flex-wrap gap-1">
+                    {project.skills.split('-').slice(0, 3).map((skill, index) => (
+                      <span key={index} className="inline-block px-2 py-1 text-xs bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-800 dark:text-zinc-200">
+                        {skill.trim()}
+                      </span>
+                    ))}
+                    {project.skills.split('-').length > 3 && (
+                      <span className="inline-block px-2 py-1 text-xs bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-800 dark:text-zinc-200">
+                        +{project.skills.split('-').length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="relative z-10 mt-4 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+                    <LinkIcon className="h-6 w-6 flex-none" />
+                    <span className="ml-2">{project.link.label}</span>
+                  </p>
+                </div>
+              </div>
+            </Card>
           ))}
         </ul>
       </SimpleLayout>
+
+      {/* Modal du projet */}
+      <ProjectModal 
+        isOpen={isModalOpen} 
+        closeModal={closeProjectModal} 
+        project={selectedProject} 
+      />
     </>
   )
 }

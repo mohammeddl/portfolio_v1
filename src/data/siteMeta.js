@@ -28,8 +28,14 @@ const siteMeta = {
     github: 'https://github.com/mohammeddl',
     linkedin: 'https://ma.linkedin.com/in/daali-mohammed-85736b271/',
   },
-  siteUrl: 'https://brian.dev',
+  siteUrl: 'https://med.dev',
 }
+
+const placeholderScreenshots = [
+  '/api/placeholder/800/600?text=Capture%20Écran%201',
+  '/api/placeholder/800/600?text=Capture%20Écran%202',
+  '/api/placeholder/800/600?text=Capture%20Écran%203' 
+];
 export const resume = [
   {
     company: 'Amazon',
@@ -64,17 +70,23 @@ export const resume = [
   },
 ]
 export const projects = [
-  {
-    name: 'RecycleHub',
-    description:
-      'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
-    skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
-    link: {
-      href: 'https://recycle-hub-zeta.vercel.app/home',
-      label: 'recycleHub.com',
-    },
-    logo: recycleHub,
+ {
+  name: 'RecycleHub',
+  description:
+    'The application RecycleHub is an innovative Single Page Application (SPA) that bridges the gap between individuals and certified waste collectors.',
+  skills: 'ANGULAR-RxJS-DOCKER-Reactive Forms-TailwindCSS',
+  link: {
+    href: 'https://recycle-hub-zeta.vercel.app/home',
+    label: 'recycleHub.com',
   },
+  repository: 'https://github.com/mohammeddl/RecycleHub',
+  logo: recycleHub,
+  screenshots: [
+    '/api/placeholder/800/600?text=RecycleHub%20Dashboard',
+    '/api/placeholder/800/600?text=RecycleHub%20Profile',
+    '/api/placeholder/800/600?text=RecycleHub%20Map'
+  ],
+},
     {
     name: 'CreativePrint',
     description:
