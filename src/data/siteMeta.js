@@ -17,9 +17,15 @@ import fauget from '@/images/logos/fauget.png'
 import recycleHub from '@/images/logos/recyclehub.png'
 import creativePrint from '@/images/logos/creativeprint.png'      
 
+// Dummy screenshots arrays since we don't have actual screenshots yet
+const placeholderScreenshots = [
+  '/api/placeholder/800/600',
+  '/api/placeholder/800/600' 
+];
+
 const siteMeta = {
   title: 'Daali Mohammed',
-  description: 'Daali Mohammed is a developer web.',
+  description: 'Daali Mohammed is a web developer.',
   copyright: 'Daali Mohammed',
   author: {
     name: 'Daali mohammed',
@@ -30,6 +36,7 @@ const siteMeta = {
   },
   siteUrl: 'https://brian.dev',
 }
+
 export const resume = [
   {
     company: 'Amazon',
@@ -63,6 +70,7 @@ export const resume = [
     end: '2014',
   },
 ]
+
 export const projects = [
   {
     name: 'RecycleHub',
@@ -75,10 +83,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/RecycleHub',
     logo: recycleHub,
-    screenshots: [
-      '/images/projects/recyclehub/screen1.jpg',
-      '/images/projects/recyclehub/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'CreativePrint',
@@ -91,10 +96,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/CreativePrint',
     logo: creativePrint,
-    screenshots: [
-      '/images/projects/creativeprint/screen1.jpg',
-      '/images/projects/creativeprint/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Insurance',
@@ -107,10 +109,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/insurance.git',
     logo: insurance,
-    screenshots: [
-      '/images/projects/insurance/screen1.jpg',
-      '/images/projects/insurance/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Memory-Game',
@@ -123,10 +122,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/memory-game',
     logo: memoryGame,
-    screenshots: [
-      '/images/projects/memory-game/screen1.jpg',
-      '/images/projects/memory-game/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Fitness',
@@ -139,10 +135,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/projetFitness',
     logo: logoFitness,
-    screenshots: [
-      '/images/projects/fitness/screen1.jpg',
-      '/images/projects/fitness/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'FaugetTravel',
@@ -155,10 +148,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/projetFauget',
     logo: fauget,
-    screenshots: [
-      '/images/projects/fauget/screen1.jpg',
-      '/images/projects/fauget/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Citronix ',
@@ -171,10 +161,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/citronix',
     logo: citronix,
-    screenshots: [
-      '/images/projects/citronix/screen1.jpg',
-      '/images/projects/citronix/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Employee Management ',
@@ -187,10 +174,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/employee-management',
     logo: employee,
-    screenshots: [
-      '/images/projects/employee/screen1.jpg',
-      '/images/projects/employee/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Wiki',
@@ -203,10 +187,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/WikiProjet.git',
     logo: logoWiki,
-    screenshots: [
-      '/images/projects/wiki/screen1.jpg',
-      '/images/projects/wiki/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Evento',
@@ -219,10 +200,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/Evento',
     logo: logoEvanto,
-    screenshots: [
-      '/images/projects/evento/screen1.jpg',
-      '/images/projects/evento/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Whisper',
@@ -235,10 +213,7 @@ export const projects = [
     },
     repository: 'https://github.com/zinebMachrouh/Whisper.git',
     logo: logoWhisper,
-    screenshots: [
-      '/images/projects/whisper/screen1.jpg',
-      '/images/projects/whisper/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'HireMe',
@@ -251,10 +226,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/HireMee.git',
     logo: logoHiremee,
-    screenshots: [
-      '/images/projects/hireme/screen1.jpg',
-      '/images/projects/hireme/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'Nexus',
@@ -267,10 +239,7 @@ export const projects = [
     },
     repository: 'https://github.com/Sahtani/Cryptocurrency_management.git',
     logo: logoNexus,
-    screenshots: [
-      '/images/projects/nexus/screen1.jpg',
-      '/images/projects/nexus/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
   },
   {
     name: 'cyberTeck',
@@ -283,10 +252,7 @@ export const projects = [
     },
     repository: 'https://github.com/mohammeddl/cyberTeck.git',
     logo: cybertech,
-    screenshots: [
-      '/images/projects/cyberteck/screen1.jpg',
-      '/images/projects/cyberteck/screen2.jpg'
-    ],
+    screenshots: placeholderScreenshots,
     style: {
       width: '50px',
       height: '50px',

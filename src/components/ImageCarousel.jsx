@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 export function ImageCarousel({ images, projectName }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Réinitialiser l'index et l'état de chargement lorsque les images changent
+  
   useEffect(() => {
     setCurrentImageIndex(0);
     setIsLoading(true);
@@ -49,25 +49,25 @@ export function ImageCarousel({ images, projectName }) {
 
   return (
     <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-700">
-      {/* Image actuelle avec placeholder pendant chargement */}
+     
       <div className="relative h-full w-full">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 animate-pulse">
             <span className="text-zinc-400 dark:text-zinc-500">Chargement...</span>
           </div>
         )}
-        <Image
-          src={images[currentImageIndex]}
-          alt={`Capture d'écran ${currentImageIndex + 1} de ${projectName}`}
-          layout="fill"
-          objectFit="contain"
-          className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-          onLoadingComplete={handleImageLoad}
-          unoptimized
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src={images[currentImageIndex]}
+            alt={`Capture d'écran ${currentImageIndex + 1} de ${projectName}`}
+            fill
+            className={`object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            onLoadingComplete={handleImageLoad}
+            unoptimized
+          />
+        </div>
       </div>
-      
-      {/* Contrôles de navigation (flèches) */}
+
       {images.length > 1 && (
         <div className="absolute inset-0 flex items-center justify-between p-4">
           <button 
@@ -91,7 +91,6 @@ export function ImageCarousel({ images, projectName }) {
         </div>
       )}
       
-      {/* Indicateurs de pagination (points) */}
       {images.length > 1 && (
         <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
           {images.map((_, index) => (
@@ -109,7 +108,7 @@ export function ImageCarousel({ images, projectName }) {
         </div>
       )}
       
-      {/* Indication du nombre d'images */}
+
       <div className="absolute top-4 right-4">
         <span className="px-2 py-1 text-xs font-medium bg-black/50 text-white rounded-md">
           {currentImageIndex + 1} / {images.length}

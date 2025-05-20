@@ -1,12 +1,11 @@
 import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import { ImageCarousel } from '@/components/ImageCarousel'
 
 export function ProjectModal({ isOpen, closeModal, project }) {
   if (!project) return null;
 
-  // Déterminer si le projet a des captures d'écran
   const hasScreenshots = project.screenshots && project.screenshots.length > 0;
 
   return (
@@ -48,7 +47,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                     {project.description}
                   </p>
                   
-                  {/* Technologies utilisées */}
                   <div className="mb-6">
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Technologies</h4>
                     <div className="flex flex-wrap gap-2">
@@ -63,7 +61,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                     </div>
                   </div>
 
-                  {/* Captures d'écran du projet - utiliser notre composant de carousel */}
                   <div className="mb-6">
                     <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Aperçu du projet</h4>
                     {hasScreenshots ? (
@@ -87,7 +84,6 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                     )}
                   </div>
 
-                  {/* Boutons d'action */}
                   <div className="flex flex-wrap mt-8 justify-center gap-4">
                     {project.repository && (
                       <a
