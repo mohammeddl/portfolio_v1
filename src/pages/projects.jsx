@@ -74,7 +74,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-500/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                   <button className="bg-white text-teal-700 dark:bg-zinc-800 dark:text-teal-400 font-medium px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
                     Voir le projet
-                  </>
+                  </button>
                 </div>
 
                 {/* Contenu de la carte */}
