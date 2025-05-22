@@ -78,10 +78,14 @@ export const projects = [
   repository: 'https://github.com/mohammeddl/RecycleHub',
   logo: recycleHub,
   screenshots: [
-    '../images/screens/RecycleHub1.png',
-    '/api/placeholder/800/600?text=RecycleHub%20Profile',
-    '/api/placeholder/800/600?text=RecycleHub%20Map'
+      '/images/screens/RecycleHub1.png', 
+      '/images/screens/RecycleHub2.png',
+      '/images/screens/RecycleHub3.png',
+      '/images/screens/RecycleHub4.png',
+      '/images/screens/RecycleHub5.png',
+      '/images/screens/RecycleHub6.png',
   ],
+
 },
     {
     name: 'CreativePrint',
