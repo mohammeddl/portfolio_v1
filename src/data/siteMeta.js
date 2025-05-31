@@ -97,6 +97,11 @@ export const projects = [
       label: 'github.com',
     },
     logo: creativePrint,
+  screenshots: [
+      '/screens/createPrint.png.png',
+      '/screens/createPrint1.png.png',
+      '/screens/createPrint2.png.png',
+    ],
   },
     {
     name: 'Insurance',
@@ -140,6 +145,12 @@ export const projects = [
       href: 'https://mohammeddl.github.io/projetFauget/index.html',
       label: 'fauget.com',
     },
+    repository: '',
+    screenshots: [
+      '/screens/FaugetTravel1.png',
+      '/screens/FaugetTravel2.png',
+      '/screens/FaugetTravel3.png',
+    ],
     logo: fauget,
   },
   {

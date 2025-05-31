@@ -66,7 +66,7 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                   {/* Carrousel à gauche */}
                   <div className="md:col-span-2">
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Aperçu du projet</h4>
+                      <h4 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Project overview</h4>
                       <div className="relative">
                         <ImageCarousel 
                           images={screenshotsToUse} 
@@ -75,7 +75,7 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                         {!hasScreenshots && (
                           <div className="absolute inset-0 flex items-center justify-center">
                             <div className="bg-zinc-700/80 text-white px-4 py-2 rounded-md">
-                              {!hasScreenshots ? "Captures d'écran à venir" : ""}
+                              {!hasScreenshots ? "Screenshots to come" : ""}
                             </div>
                           </div>
                         )}
