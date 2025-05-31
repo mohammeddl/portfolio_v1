@@ -78,13 +78,13 @@ export const projects = [
   repository: 'https://github.com/mohammeddl/RecycleHub',
   logo: recycleHub,
   screenshots: [
-      '/images/screens/RecycleHub1.png', 
-      '/images/screens/RecycleHub2.png',
-      '/images/screens/RecycleHub3.png',
-      '/images/screens/RecycleHub4.png',
-      '/images/screens/RecycleHub5.png',
-      '/images/screens/RecycleHub6.png',
-  ],
+  '/screens/RecycleHub1.png',
+  '/screens/RecycleHub2.png',
+  '/screens/RecycleHub3.png',
+  '/screens/RecycleHub4.png',
+  '/screens/RecycleHub5.png',
+  '/screens/RecycleHub6.png',
+],
 
 },
     {
