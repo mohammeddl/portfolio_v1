@@ -77,7 +77,6 @@ export function ImageCarousel({ images, projectName }) {
           </div>
         )}
         <div className="relative h-full w-full">
-          {/* Correction ici : ajout des propriétés width et height */}
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Image
               src={images[currentImageIndex]}
