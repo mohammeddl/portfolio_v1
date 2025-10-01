@@ -1,4 +1,4 @@
-import Image from 'next/future/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -23,8 +23,10 @@ function SocialLink({ className, href, children, icon: Icon }) {
         href={href}
         className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
       >
-        <Icon className="flex-none w-6 h-6 transition fill-zinc-500 group-hover:fill-teal-500" />
-        <span className="ml-4">{children}</span>
+        <span className="flex">
+          <Icon className="flex-none w-6 h-6 transition fill-zinc-500 group-hover:fill-teal-500" />
+          <span className="ml-4">{children}</span>
+        </span>
       </Link>
     </li>
   )
@@ -77,7 +79,7 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I'm Daali Mohammed. Full Stack Web Development, 
+              I&apos;m Daali Mohammed. Full Stack Web Development,
             </h1>
             <div className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
               <p>

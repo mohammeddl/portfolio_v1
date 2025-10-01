@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import SEO from './next-seo.config'
+import SEO from '@/lib/next-seo.config'
 import { DefaultSeo } from 'next-seo';
 
 import '@/styles/tailwind.css'
