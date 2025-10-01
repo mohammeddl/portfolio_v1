@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo';
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { ProjectModal } from '@/components/ProjectModal'
 
 import siteMeta, { projects } from '@/data/siteMeta'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function LinkIcon(props) {
   return (
@@ -22,6 +26,33 @@ function LinkIcon(props) {
 export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const projectRefs = useRef([]);
+
+  useEffect(() => {
+    // Animate project cards on scroll
+    projectRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(card,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom-=100',
+              toggleActions: 'play none none reverse',
+            },
+            delay: index * 0.1, // Stagger effect
+          }
+        );
+      }
+    });
+  }, []);
 
   const openProjectModal = (project) => {
     setSelectedProject(project);
@@ -64,9 +95,10 @@ export default function Projects() {
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <Card as="li" key={project.name}>
-              <div 
+              <div
+                ref={(el) => (projectRefs.current[index] = el)}
                 className="project-card h-full flex flex-col relative group cursor-pointer transition-all duration-300 hover:shadow-xl dark:hover:shadow-zinc-800/50 rounded-2xl overflow-hidden"
                 onClick={() => openProjectModal(project)}
               >

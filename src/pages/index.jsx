@@ -1,6 +1,8 @@
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import gsap from 'gsap'
 
 import { Container } from '@/components/Container'
 import {
@@ -63,12 +65,41 @@ function DownloadIcon(props) {
 }
 
 export default function About() {
+  const imageRef = useRef(null)
+  const titleRef = useRef(null)
+  const contentRef = useRef(null)
+  const socialRef = useRef(null)
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    tl.fromTo(imageRef.current,
+      { opacity: 0, scale: 0.8, rotation: -10 },
+      { opacity: 1, scale: 1, rotation: 3, duration: 1 }
+    )
+    .fromTo(titleRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8 },
+      '-=0.5'
+    )
+    .fromTo(contentRef.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8 },
+      '-=0.4'
+    )
+    .fromTo(socialRef.current,
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.8 },
+      '-=0.4'
+    )
+  }, [])
+
   return (
     <>
       <Container className="mt-16 sm:mt-32">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
           <div className="lg:pl-20">
-            <div className="max-w-xs px-2.5 lg:max-w-none">
+            <div ref={imageRef} className="max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src={portraitImage2}
                 alt=""
@@ -80,10 +111,10 @@ export default function About() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+            <h1 ref={titleRef} className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               I&apos;m Daali Mohammed. Full Stack Web Developer
             </h1>
-            <div className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
+            <div ref={contentRef} className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
               <p>
               Deeply passionate about coding and creating innovative web solutions. With a dedicated focus on honing my skills, I strive to contribute meaningfully to the world of web development.
               </p>
@@ -119,7 +150,7 @@ export default function About() {
             </div>
           </div>
           <div className="lg:pl-20">
-            <ul role="list">
+            <ul ref={socialRef} role="list">
               <SocialLink href={siteMeta.author.instagram} icon={InstagramIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
