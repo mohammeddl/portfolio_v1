@@ -1,7 +1,3 @@
-const logoAmazon = '/logos/aws.svg'
-const logoClarity = '/logos/clarity.jpg'
-const logoMicrosoft = '/logos/azure.svg'
-const logoXOR = '/logos/xor.jpg'
 const logoEvanto = '/logos/evanto.png'
 const logoFitness = '/logos/fitness.png'
 const logoWiki = '/logos/wiki.png'
@@ -32,39 +28,6 @@ const siteMeta = {
 }
 
 
-export const resume = [
-  {
-    company: 'Amazon',
-    title: 'Principal Developer Advocate',
-    logo: logoAmazon,
-    start: '2022',
-    end: {
-      label: 'Present',
-      dateTime: new Date().getFullYear(),
-    },
-  },
-  {
-    company: 'Microsoft',
-    title: 'Principal Cloud Developer Advocate',
-    logo: logoMicrosoft,
-    start: '2017',
-    end: '2022',
-  },
-  {
-    company: 'XOR Data Exchange',
-    title: 'CIO',
-    logo: logoXOR,
-    start: '2014',
-    end: '2016',
-  },
-  {
-    company: 'Clarity Services, Inc.',
-    title: 'COO',
-    logo: logoClarity,
-    start: '2008',
-    end: '2014',
-  },
-]
 export const projects = [
  {
   name: 'RecycleHub',
