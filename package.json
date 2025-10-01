@@ -21,6 +21,7 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.7",
     "@tailwindcss/typography": "^0.5.9",
+    "@vercel/analytics": "^1.5.0",
     "autoprefixer": "^10.4.14",
     "clsx": "^1.2.1",
     "fast-glob": "^3.2.12",
