@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -64,25 +65,38 @@ function DownloadIcon(props) {
   )
 }
 
-export default function About() {
+export default function About({ previousPathname }) {
+  const router = useRouter()
   const imageRef = useRef(null)
   const titleRef = useRef(null)
   const contentRef = useRef(null)
   const socialRef = useRef(null)
   const [decryptedText, setDecryptedText] = useState('')
   const [animationsReady, setAnimationsReady] = useState(false)
+  const hasLoadingScreenRef = useRef(false)
 
   useEffect(() => {
-    // Wait for loading screen to complete (3 seconds total for loading animation)
-    const loadingDelay = setTimeout(() => {
+    // Check if this is initial page load (no previous pathname) or navigation from another page
+    const isInitialLoad = !previousPathname || previousPathname === router.pathname
+
+    if (isInitialLoad && !hasLoadingScreenRef.current) {
+      // First time loading the site - wait for loading screen
+      hasLoadingScreenRef.current = true
+      const loadingDelay = setTimeout(() => {
+        setAnimationsReady(true)
+      }, 3000)
+      return () => clearTimeout(loadingDelay)
+    } else {
+      // Navigating from another page - play animations immediately
       setAnimationsReady(true)
-    }, 3000)
-
-    return () => clearTimeout(loadingDelay)
-  }, [])
+    }
+  }, [previousPathname, router.pathname])
 
   useEffect(() => {
-    if (!animationsReady) return
+    if (!animationsReady || !imageRef.current || !titleRef.current || !contentRef.current || !socialRef.current) return
+
+    // Reset animations
+    gsap.set([imageRef.current, titleRef.current, contentRef.current, socialRef.current], { clearProps: 'all' })
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
@@ -110,6 +124,9 @@ export default function About() {
   useEffect(() => {
     if (!animationsReady) return
 
+    // Reset text
+    setDecryptedText('')
+
     const text = 'Full Stack Web Developer'
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*'
     let iterations = 0
@@ -136,7 +153,7 @@ export default function About() {
     }, 30)
 
     return () => clearInterval(interval)
-  }, [animationsReady])
+  }, [animationsReady, router.pathname])
 
   return (
     <>
