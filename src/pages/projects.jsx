@@ -32,8 +32,8 @@ export default function Projects() {
     setIsModalOpen(false);
   };
 
-  const headline = "Bienvenue dans mon portfolio"
-  const intro = "Où les idées prennent vie et le code se transforme en solutions tangibles. Chaque projet présenté ici représente un mélange de créativité, de résolution de problèmes et d'expertise technique."
+  const headline = "Welcome to my portfolio"
+  const intro = "Where ideas come to life and code transforms into tangible solutions. Each project presented here represents a blend of creativity, problem-solving, and technical expertise."
 
   return (
     <>
@@ -70,14 +70,14 @@ export default function Projects() {
                 className="project-card h-full flex flex-col relative group cursor-pointer transition-all duration-300 hover:shadow-xl dark:hover:shadow-zinc-800/50 rounded-2xl overflow-hidden"
                 onClick={() => openProjectModal(project)}
               >
-                {/* Overlay avec effet */}
+                {/* Overlay with effect */}
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-500/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                   <button className="bg-white text-teal-700 dark:bg-zinc-800 dark:text-teal-400 font-medium px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
-                    Voir le projet
+                    View project
                   </button>
                 </div>
 
-                {/* Contenu de la carte */}
+                {/* Card content */}
                 <div className="p-4 flex flex-col h-full z-10 group-hover:z-0">
                   <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
                     <Image
@@ -96,7 +96,7 @@ export default function Projects() {
                     {project.description}
                   </Card.Description>
 
-                  {/* Étiquettes de compétences */}
+                  {/* Skills tags */}
                   <div className="mt-4 flex flex-wrap gap-1">
                     {project.skills.split('-').slice(0, 3).map((skill, index) => (
                       <span key={index} className="inline-block px-2 py-1 text-xs bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-800 dark:text-zinc-200">
@@ -121,7 +121,7 @@ export default function Projects() {
         </ul>
       </SimpleLayout>
 
-      {/* Modal du projet */}
+      {/* Project modal */}
       <ProjectModal 
         isOpen={isModalOpen} 
         closeModal={closeProjectModal} 

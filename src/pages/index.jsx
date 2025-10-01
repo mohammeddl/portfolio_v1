@@ -10,8 +10,8 @@ import {
   LinkedInIcon,
   MastodonIcon
 } from '@/components/SocialIcons'
-import portraitImage from '@/images/brian-head.jpg'
-import portraitImage2 from '@/images/3L3A0403.jpeg'
+const portraitImage = '/brian-head.jpg'
+const portraitImage2 = '/3L3A0403.jpeg'
 import siteMeta from '@/data/siteMeta'
 import { NextSeo } from 'next-seo';
 
@@ -72,6 +72,8 @@ export default function About() {
               <Image
                 src={portraitImage2}
                 alt=""
+                width={512}
+                height={512}
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="object-cover aspect-square rotate-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800"
               />
@@ -79,37 +81,40 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I&apos;m Daali Mohammed. Full Stack Web Development,
+              I&apos;m Daali Mohammed. Full Stack Web Developer
             </h1>
             <div className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
               <p>
               Deeply passionate about coding and creating innovative web solutions. With a dedicated focus on honing my skills, I strive to contribute meaningfully to the world of web development.
               </p>
-              <h2>Skills:</h2>
+
+              <h2>Technical Skills</h2>
+
               <p>
-                <b>Frontend Development:</b> Proficient in HTML, CSS, JavaScript, React, Next, Angular .
+                <b>Back-end:</b> JAVA | Spring Boot | J2EE | Spring Core | JPA | JUnit
               </p>
               <p>
-                <b>Backend Development:</b> Skilled in Java, PHP and Spring Boot framework, Laravel framework, proficient in building robust backend systems to power dynamic web applications.
+                <b>Front-end:</b> HTML | TailwindCSS | TypeScript | ReactJs | NextJs | Angular
               </p>
               <p>
-                <b>Database Management:</b> Experienced in database management using PgAdmin and PHPMyAdmin, Mongodb, ensuring efficient data storage and retrieval.
+                <b>DevOps:</b> DigitalOcean | Docker | Jenkins | Github Actions | Maven
               </p>
               <p>
-                <b>Containerization:</b> Knowledgeable in containerization techniques using Docker, enhancing deployment processes and scalability.
-              </p>
-              <h2>Additional Technologies:</h2>
-              <p>
-                <b>UML :</b> Skilled in creating UML diagrams to visualize and communicate system designs effectively.
+                <b>Databases:</b> MySQL | PostgreSQL | Oracle | MongoDB
               </p>
               <p>
-                <b>Object-Oriented Programming (OOP):</b> Experienced in applying OOP principles to develop scalable and maintainable code.
+                <b>Tools:</b> Drawio UML | Git | GitHub | Jira | Trello
               </p>
               <p>
-                <b>Jira/trello:</b>  Familiar with project management tools like Jira/trello for effective collaboration and task tracking.
+                <b>Methodologies:</b> Agile | Scrum
               </p>
               <p>
-                <b>CI/CD:</b> Knowledgeable in CI/CD pipelines using Jenkins et Github Actions, ensuring efficient code integration and deployment.
+                <b>UI/UX:</b> Figma | Adobe Photoshop | Adobe Illustrator
+              </p>
+
+              <h2>Areas of Interest</h2>
+              <p>
+                Software Architecture | Clean Code Practices | Continuous Learning
               </p>
             </div>
           </div>

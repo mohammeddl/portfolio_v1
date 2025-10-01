@@ -118,12 +118,12 @@ export function ProjectModal({ isOpen, closeModal, project }) {
                           <polyline points="15 3 21 3 21 9"></polyline>
                           <line x1="10" y1="14" x2="21" y2="3"></line>
                         </svg>
-                        Visiter le site
+                        Visit website
                       </a>
                     </div>
                   </div>
 
-                  {/* Informations à droite */}
+                  {/* Information on the right */}
                   <div className="md:col-span-1">
                     <div className="bg-zinc-50 dark:bg-zinc-700/30 p-4 rounded-lg">
                       <div className="mb-4">
