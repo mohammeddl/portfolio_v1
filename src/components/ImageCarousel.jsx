@@ -80,12 +80,14 @@ export function ImageCarousel({ images, projectName }) {
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Image
               src={images[currentImageIndex]}
-              alt={`Capture d'écran ${currentImageIndex + 1} de ${projectName}`}
-              layout="fill"
-              objectFit="contain"
+              alt={`Screenshot ${currentImageIndex + 1} of ${projectName}`}
+              fill
+              style={{ objectFit: 'contain' }}
               className={`transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-              onLoadingComplete={handleImageLoad}
-              unoptimized
+              onLoad={handleImageLoad}
+              quality={90}
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             />
           </div>
         </div>

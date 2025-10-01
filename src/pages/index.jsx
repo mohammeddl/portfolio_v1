@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -69,8 +69,21 @@ export default function About() {
   const titleRef = useRef(null)
   const contentRef = useRef(null)
   const socialRef = useRef(null)
+  const [decryptedText, setDecryptedText] = useState('')
+  const [animationsReady, setAnimationsReady] = useState(false)
 
   useEffect(() => {
+    // Wait for loading screen to complete (3 seconds total for loading animation)
+    const loadingDelay = setTimeout(() => {
+      setAnimationsReady(true)
+    }, 3000)
+
+    return () => clearTimeout(loadingDelay)
+  }, [])
+
+  useEffect(() => {
+    if (!animationsReady) return
+
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
     tl.fromTo(imageRef.current,
@@ -92,7 +105,38 @@ export default function About() {
       { opacity: 1, x: 0, duration: 0.8 },
       '-=0.4'
     )
-  }, [])
+  }, [animationsReady])
+
+  useEffect(() => {
+    if (!animationsReady) return
+
+    const text = 'Full Stack Web Developer'
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*'
+    let iterations = 0
+
+    const interval = setInterval(() => {
+      setDecryptedText(
+        text
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return ' '
+            if (index < iterations) {
+              return text[index]
+            }
+            return chars[Math.floor(Math.random() * chars.length)]
+          })
+          .join('')
+      )
+
+      if (iterations >= text.length) {
+        clearInterval(interval)
+      }
+
+      iterations += 1 / 3
+    }, 30)
+
+    return () => clearInterval(interval)
+  }, [animationsReady])
 
   return (
     <>
@@ -102,17 +146,27 @@ export default function About() {
             <div ref={imageRef} className="max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src={portraitImage2}
-                alt=""
+                alt="Daali Mohammed - Full Stack Developer"
                 width={512}
                 height={512}
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="object-cover aspect-square rotate-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800"
+                priority
+                quality={85}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 ref={titleRef} className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I&apos;m Daali Mohammed. Full Stack Web Developer
+              I&apos;m Daali Mohammed.{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10 font-mono bg-gradient-to-r from-teal-500 to-teal-600 dark:from-teal-400 dark:to-teal-500 bg-clip-text text-transparent">
+                  {decryptedText || 'Full Stack Web Developer'}
+                </span>
+                <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-teal-600 dark:from-teal-400 dark:to-teal-500"></span>
+              </span>
             </h1>
             <div ref={contentRef} className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
               <p>
@@ -172,10 +226,14 @@ export default function About() {
                 <a
                   href="/CV_Daali_Mohammed.pdf"
                   download
-                  className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+                  className="relative flex items-center gap-3 px-6 py-3 overflow-hidden text-sm font-semibold transition-all duration-500 rounded-xl group border-2 border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 hover:text-white dark:hover:text-white"
                 >
-                  <DownloadIcon className="flex-none w-6 h-6 transition stroke-zinc-500 group-hover:stroke-teal-500" />
-                  <span className="ml-4">Download My Resume</span>
+                  <span className="absolute inset-0 w-0 bg-teal-500 dark:bg-teal-400 transition-all duration-500 ease-out group-hover:w-full"></span>
+                  <DownloadIcon className="relative z-10 flex-none w-5 h-5 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110" />
+                  <span className="relative z-10">Download My Resume</span>
+                  <svg className="relative z-10 w-4 h-4 ml-auto transition-transform duration-500 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </a>
               </li>
             </ul>

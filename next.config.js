@@ -3,8 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true, // Allows use of unoptimized images
-    domains: [], // Add any external domains for images here if needed
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    domains: ['med.dev'],
     remotePatterns: [
       {
         protocol: 'https',

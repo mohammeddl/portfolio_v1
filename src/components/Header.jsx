@@ -234,7 +234,7 @@ function Avatar({ large = false, className, ...props }) {
       )}>
         <Image
           src={avatarImage}
-          alt=""
+          alt="Daali Mohammed"
           width={large ? 64 : 36}
           height={large ? 64 : 36}
           sizes={large ? '4rem' : '2.25rem'}
@@ -243,6 +243,7 @@ function Avatar({ large = false, className, ...props }) {
             large ? 'h-16 w-16' : 'h-9 w-9'
           )}
           priority
+          quality={85}
         />
       </span>
     </Link>
