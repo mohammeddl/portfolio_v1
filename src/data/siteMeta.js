@@ -52,8 +52,8 @@ export const projects = [
     description: 'Dakhlaclub is a hotel website in dakhla ',
     skills : 'NEXTJS-DOCKER - TYPESCRIPT - GITHUB ACTIONS CI/CD -TailwindCSS',
     link: {
-      href: 'https://dakhlaclub.com/',
-      label: 'dakhlaclub.com',
+      href: 'https://offer.dakhlaclub.com/fr/',
+      label: 'offer.dakhlaclub.com',
     },
     logo: dakhlaclub,
     screenshots: [
