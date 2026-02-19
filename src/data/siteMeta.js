@@ -11,7 +11,10 @@ const employee = '/logos/employee.png'
 const cybertech = '/logos/cybertech.png'
 const fauget = '/logos/fauget.png'
 const recycleHub = '/logos/recyclehub.png'
-const creativePrint = '/logos/creativeprint.png'      
+const creativePrint = '/logos/creativeprint.png'  
+const resetclub = '/logos/resetlogo.avif'    
+const dakhlaclub = '/logos/LogoDakhla.avif'
+const textCrafter = '/logos/textcrafterlogo.png'
 
 const siteMeta = {
   title: 'Daali Mohammed',
@@ -29,6 +32,58 @@ const siteMeta = {
 
 
 export const projects = [
+  {
+    name : 'TextCrafter',
+    description: 'TextCrafter is a website for crafters',
+    skills : 'NEXTJS - TailwindCSS - TYPESCRIPT - POSTGRESQL - DOCKER - GITHUB ACTIONS CI/CD',
+    link: {
+      href: 'https://textcrafter.tech/en',
+      label: 'textcrafter.tech',
+    },
+    logo: textCrafter,
+    screenshots: [
+    '/screens/textcrafter.png',
+    '/screens/textcrafter2.png',
+  ] 
+
+  },
+  {
+    name: 'dakhlaclub',
+    description: 'Dakhlaclub is a hotel website in dakhla ',
+    skills : 'NEXTJS-DOCKER - TYPESCRIPT - GITHUB ACTIONS CI/CD -TailwindCSS',
+    link: {
+      href: 'https://dakhlaclub.com/',
+      label: 'dakhlaclub.com',
+    },
+    logo: dakhlaclub,
+    screenshots: [
+    '/screens/dakhlaclub.png',
+    '/screens/dakhlaclub1.png',
+    '/screens/dakhlaclub2.png',
+    '/screens/dakhlaclub3.png',
+    '/screems/dakhlaclub4.png',
+    '/screems/dakhlaclub5.png'
+  ]
+
+  },
+    {
+    name: 'Resetclub',
+    description:
+      'A platform to transform your body, mind, and emotions with the In-Out-Reset™ protocol, offering sports coaching, nutrition, biohacking, and well-being in Rabat.',
+    skills: 'NEXTJS-DOCKER-Reactive Forms-TailwindCSS',
+    link: {
+      href: 'https://resetclub.ma/',
+      label: 'resetclub.ma',
+    },
+    repository: 'https://github.com/mohammeddl/RecycleHub',
+    logo: resetclub,
+    screenshots: [
+    '/screens/resetclub1.png',
+    '/screens/resetclub2.png',
+    '/screens/resetclub3.png',
+  ],
+
+  },  
  {
   name: 'RecycleHub',
   description:
