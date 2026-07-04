@@ -15,6 +15,7 @@ const creativePrint = '/logos/creativeprint.png'
 const resetclub = '/logos/resetlogo.avif'
 const dakhlaclub = '/logos/LogoDakhla.avif'
 const textCrafter = '/logos/textcrafterlogo.png'
+const serene = '/logos/serene.png'
 
 const siteMeta = {
   title: 'Daali Mohammed',
@@ -118,6 +119,25 @@ export const projects = [
       '/screens/resetclub1.png',
       '/screens/resetclub2.png',
       '/screens/resetclub3.png',
+    ],
+  },
+  {
+    name: 'Sérène',
+    description:
+      'Sérène is a Casablanca-based maison de décoration. Handcrafted ceramics, lighting, mirrors and objects that soften the noise of everyday life.',
+    skills: 'NEXTJS - TailwindCSS - TYPESCRIPT',
+    accent: 'var(--accent-orange)',
+    featured: true,
+    link: {
+      href: 'https://store-e-olive.vercel.app/',
+      label: 'store-e-olive.vercel.app',
+    },
+    repository: 'https://github.com/mohammeddl/store-e',
+    logo: serene,
+    screenshots: [
+      '/screens/serene1.png',
+      '/screens/serene2.png',
+      '/screens/serene3.png',
     ],
   },
   {
