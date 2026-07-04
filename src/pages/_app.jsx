@@ -1,50 +1,69 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { Outfit } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
+import { DefaultSeo } from 'next-seo'
 
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { Loading } from '@/components/Loading'
+import { IslandNav } from '@/components/IslandNav'
+import { BigFooter } from '@/components/BigFooter'
+import { Preloader } from '@/components/Preloader'
+import { ScrollProgress } from '@/components/ScrollProgress'
+import { SiteContext } from '@/lib/siteContext'
+import { useSmoothScroll } from '@/lib/useSmoothScroll'
 import SEO from '@/lib/next-seo.config'
-import { DefaultSeo } from 'next-seo';
 
 import '@/styles/tailwind.css'
+import '@/styles/globals.css'
 import 'focus-visible'
 
-function usePrevious(value) {
-  let ref = useRef()
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+})
 
+export default function App({ Component, pageProps }) {
+  const [loaderDone, setLoaderDone] = useState(false)
+  const [theme, setTheme] = useState('dark')
+
+  useSmoothScroll()
+
+  // Sync with the no-flash script in _document.
   useEffect(() => {
-    ref.current = value
-  }, [value])
+    const current = document.documentElement.getAttribute('data-theme')
+    if (current === 'light' || current === 'dark') setTheme(current)
+  }, [])
 
-  return ref.current
-}
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark'
+      document.documentElement.setAttribute('data-theme', next)
+      try {
+        localStorage.setItem('theme', next)
+      } catch (e) {}
+      return next
+    })
+  }, [])
 
-export default function App({ Component, pageProps, router }) {
-  let previousPathname = usePrevious(router.pathname)
-  const [isLoading, setIsLoading] = useState(true)
+  // Lock scrolling while the preloader is up.
+  useEffect(() => {
+    document.documentElement.style.overflow = loaderDone ? '' : 'hidden'
+  }, [loaderDone])
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false)
-  }
+  const handleLoaderDone = useCallback(() => setLoaderDone(true), [])
 
   return (
-   <>
-   <DefaultSeo {...SEO} />
-      {isLoading && <Loading onComplete={handleLoadingComplete} />}
-      <div className="fixed inset-0 flex justify-center sm:px-8">
-        <div className="flex w-full max-w-7xl lg:px-8">
-          <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
-        </div>
-      </div>
-      <div className="relative">
-        <Header />
-        <main>
-          <Component previousPathname={previousPathname} {...pageProps} />
+    <SiteContext.Provider value={{ loaderDone, theme, toggleTheme }}>
+      <div className={outfit.variable} style={{ fontFamily: 'var(--font-outfit), Outfit, system-ui, sans-serif' }}>
+        <DefaultSeo {...SEO} />
+        <Preloader onComplete={handleLoaderDone} />
+        <IslandNav />
+        <main className="page-main" id="main">
+          <Component {...pageProps} />
         </main>
-        <Footer />
+        <BigFooter />
+        <ScrollProgress />
+        <Analytics />
       </div>
-      <Analytics />
-    </>
+    </SiteContext.Provider>
   )
 }

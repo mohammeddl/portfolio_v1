@@ -1,62 +1,26 @@
 import { Head, Html, Main, NextScript } from 'next/document'
 
-const modeScript = `
-  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-  updateMode()
-  darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
-  window.addEventListener('storage', updateModeWithoutTransitions)
-
-  function updateMode() {
-    let isSystemDarkMode = darkModeMediaQuery.matches
-    let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
-
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode
-    }
-  }
-
-  function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
-    window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
-    }, 0)
-  }
-
-  function updateModeWithoutTransitions() {
-    disableTransitionsTemporarily()
-    updateMode()
+// Apply the saved theme before first paint (dark is the default).
+const themeScript = `
+  try {
+    var t = localStorage.getItem('theme')
+    if (t !== 'light' && t !== 'dark') t = 'dark'
+    document.documentElement.setAttribute('data-theme', t)
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark')
   }
 `
 
 export default function Document() {
   return (
-    <Html className="h-full antialiased" lang="en">
+    <Html lang="en" className="antialiased">
       <Head>
-        <script dangerouslySetInnerHTML={{ __html: modeScript }} />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.xml`}
-        />
-        <link
-          rel="alternate"
-          type="application/feed+json"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/rss/feed.json`}
-        />
-        <link rel="me" href="https://tty0.social/@bketelsen" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <meta name="theme-color" content="#0e0e0e" />
       </Head>
-      <body className="flex h-full flex-col bg-zinc-50 dark:bg-black">
+      <body>
         <Main />
         <NextScript />
-        <div style={{display: 'none'}}>        <a rel="me" href="https://tty0.social/@bketelsen">Mastodon</a>
-</div>
       </body>
     </Html>
   )

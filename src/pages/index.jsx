@@ -1,262 +1,280 @@
-import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
+import { NextSeo } from 'next-seo'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
-import { Container } from '@/components/Container'
-import {
-  TwitterIcon,
-  InstagramIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  MastodonIcon
-} from '@/components/SocialIcons'
-const portraitImage = '/brian-head.jpg'
-const portraitImage2 = '/3L3A0403.jpeg'
-import siteMeta from '@/data/siteMeta'
-import { NextSeo } from 'next-seo';
+import { SkeletonImage } from '@/components/SkeletonImage'
+import { BlurReveal } from '@/components/BlurReveal'
+import { AnimatedSplit } from '@/components/AnimatedSplit'
+import siteMeta, { projects, skills, interests } from '@/data/siteMeta'
+import { useSite } from '@/lib/siteContext'
 
+gsap.registerPlugin(ScrollTrigger)
 
-function SocialLink({ className, href, children, icon: Icon }) {
+const portrait = '/3L3A0403.jpeg'
+const MARQUEE_TEXT = 'daali mohammed — '
+
+function MarqueeTrack() {
   return (
-    <li className={clsx(className, 'flex')}>
-      <Link
-        href={href}
-        className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-      >
-        <span className="flex">
-          <Icon className="flex-none w-6 h-6 transition fill-zinc-500 group-hover:fill-teal-500" />
-          <span className="ml-4">{children}</span>
+    <div className="marquee-track">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <span className="marquee-unit" key={i}>
+          {MARQUEE_TEXT}
         </span>
-      </Link>
-    </li>
+      ))}
+    </div>
   )
 }
 
-function MailIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
-      />
-    </svg>
-  )
-}
+function Hero({ ready }) {
+  const heroRef = useRef(null)
+  const mediaRef = useRef(null)
 
-function DownloadIcon(props) {
-  return (
-    <svg 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      aria-hidden="true" 
-      {...props}
-    >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  )
-}
-
-export default function About({ previousPathname }) {
-  const router = useRouter()
-  const imageRef = useRef(null)
-  const titleRef = useRef(null)
-  const contentRef = useRef(null)
-  const socialRef = useRef(null)
-  const [decryptedText, setDecryptedText] = useState('')
-  const [animationsReady, setAnimationsReady] = useState(false)
-  const hasLoadingScreenRef = useRef(false)
-
+  // Mouse parallax — lerped offsets drive --mx/--my (media transform + front
+  // marquee clip window follow together, like the reference site).
   useEffect(() => {
-    // Check if this is initial page load (no previous pathname) or navigation from another page
-    const isInitialLoad = !previousPathname || previousPathname === router.pathname
+    const hero = heroRef.current
+    if (!hero) return
+    let raf
+    const target = { x: 0, y: 0 }
+    const current = { x: 0, y: 0 }
 
-    if (isInitialLoad && !hasLoadingScreenRef.current) {
-      // First time loading the site - wait for loading screen
-      hasLoadingScreenRef.current = true
-      const loadingDelay = setTimeout(() => {
-        setAnimationsReady(true)
-      }, 3000)
-      return () => clearTimeout(loadingDelay)
-    } else {
-      // Navigating from another page - play animations immediately
-      setAnimationsReady(true)
+    const onMove = (e) => {
+      const nx = e.clientX / window.innerWidth - 0.5
+      const ny = e.clientY / window.innerHeight - 0.5
+      target.x = nx * 44
+      target.y = ny * 44
     }
-  }, [previousPathname, router.pathname])
 
+    const loop = () => {
+      current.x += (target.x - current.x) * 0.07
+      current.y += (target.y - current.y) * 0.07
+      hero.style.setProperty('--mx', `${current.x.toFixed(2)}px`)
+      hero.style.setProperty('--my', `${current.y.toFixed(2)}px`)
+      raf = requestAnimationFrame(loop)
+    }
+
+    window.addEventListener('mousemove', onMove)
+    raf = requestAnimationFrame(loop)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  // Entrance once the preloader finishes.
   useEffect(() => {
-    if (!animationsReady || !imageRef.current || !titleRef.current || !contentRef.current || !socialRef.current) return
-
-    // Reset animations
-    gsap.set([imageRef.current, titleRef.current, contentRef.current, socialRef.current], { clearProps: 'all' })
-
+    if (!ready || !heroRef.current) return
+    const q = gsap.utils.selector(heroRef.current)
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    tl.fromTo(
+      mediaRef.current,
+      { scale: 0.6, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.2, ease: 'expo.out' }
+    )
+      .fromTo(
+        q('.hero-marquee-back, .hero-marquee-front'),
+        { opacity: 0 },
+        { opacity: 1, duration: 1 },
+        '-=0.7'
+      )
+      .fromTo(
+        q('.hero-topbar, .hero-identity'),
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, clearProps: 'all' },
+        '-=0.6'
+      )
+    return () => tl.kill()
+  }, [ready])
 
-    tl.fromTo(imageRef.current,
-      { opacity: 0, scale: 0.8, rotation: -10 },
-      { opacity: 1, scale: 1, rotation: 3, duration: 1 }
-    )
-    .fromTo(titleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8 },
-      '-=0.5'
-    )
-    .fromTo(contentRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8 },
-      '-=0.4'
-    )
-    .fromTo(socialRef.current,
-      { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 0.8 },
-      '-=0.4'
-    )
-  }, [animationsReady])
+  return (
+    <section ref={heroRef} className="hero" aria-label="Intro">
+      <div className="hero-topbar">
+        <span className="dim">available for work</span>
+        <span className="dim">based in morocco</span>
+      </div>
+
+      <div className="hero-marquee-back" aria-hidden="true">
+        <MarqueeTrack />
+      </div>
+
+      <div ref={mediaRef} className="hero-media">
+        <Image
+          src={portrait}
+          alt="Daali Mohammed — full stack web developer"
+          fill
+          sizes="(max-width: 1024px) 72vw, 56vh"
+          priority
+          quality={85}
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+
+      <div className="hero-marquee-front" aria-hidden="true">
+        <MarqueeTrack />
+      </div>
+
+      <div className="hero-identity">
+        full stack web developer — java / spring boot / react / next.js /
+        angular
+      </div>
+    </section>
+  )
+}
+
+function Reveal({ children, className, ...props }) {
+  const ref = useRef(null)
 
   useEffect(() => {
-    if (!animationsReady) return
-
-    // Reset text
-    setDecryptedText('')
-
-    const text = 'Full Stack Web Developer'
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*'
-    let iterations = 0
-
-    const interval = setInterval(() => {
-      setDecryptedText(
-        text
-          .split('')
-          .map((char, index) => {
-            if (char === ' ') return ' '
-            if (index < iterations) {
-              return text[index]
-            }
-            return chars[Math.floor(Math.random() * chars.length)]
-          })
-          .join('')
-      )
-
-      if (iterations >= text.length) {
-        clearInterval(interval)
+    const el = ref.current
+    if (!el) return
+    const anim = gsap.fromTo(
+      el,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom-=80',
+          toggleActions: 'play none none none',
+        },
       }
+    )
+    return () => {
+      anim.scrollTrigger?.kill()
+      anim.kill()
+    }
+  }, [])
 
-      iterations += 1 / 3
-    }, 30)
+  return (
+    <div ref={ref} className={className} {...props}>
+      {children}
+    </div>
+  )
+}
 
-    return () => clearInterval(interval)
-  }, [animationsReady, router.pathname])
+export default function Home() {
+  const { loaderDone } = useSite()
+  const featured = projects.filter((p) => p.featured).slice(0, 4)
 
   return (
     <>
-      <Container className="mt-16 sm:mt-32">
-        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-          <div className="lg:pl-20">
-            <div ref={imageRef} className="max-w-xs px-2.5 lg:max-w-none">
-              <Image
-                src={portraitImage2}
-                alt="Daali Mohammed - Full Stack Developer"
-                width={512}
-                height={512}
-                sizes="(min-width: 1024px) 32rem, 20rem"
-                className="object-cover aspect-square rotate-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800"
-                priority
-                quality={85}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-              />
-            </div>
-          </div>
-          <div className="lg:order-first lg:row-span-2">
-            <h1 ref={titleRef} className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I&apos;m Daali Mohammed.{' '}
-              <span className="relative inline-block">
-                <span className="relative z-10 font-mono bg-gradient-to-r from-teal-500 to-teal-600 dark:from-teal-400 dark:to-teal-500 bg-clip-text text-transparent">
-                  {decryptedText || 'Full Stack Web Developer'}
-                </span>
-                <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-teal-600 dark:from-teal-400 dark:to-teal-500"></span>
+      <NextSeo
+        title="Daali Mohammed — full stack web developer"
+        description={siteMeta.description}
+        canonical={siteMeta.siteUrl}
+        openGraph={{
+          url: siteMeta.siteUrl,
+          siteName: siteMeta.title,
+        }}
+      />
+
+      <Hero ready={loaderDone} />
+
+      {/* who am i */}
+      <section className="section" aria-label="About me">
+        <AnimatedSplit tagName="h2" className="bracket-label">
+          <span className="bracket">[</span>who am i
+          <span className="bracket">]</span>
+        </AnimatedSplit>
+        <BlurReveal
+          className="section-desc"
+          text={
+            "i'm daali mohammed — a full stack web developer deeply passionate about coding and creating innovative web solutions. with a dedicated focus on honing my skills, i strive to contribute meaningfully to the world of web development. what i care about: software architecture, clean code, and never stopping learning."
+          }
+        />
+      </section>
+
+      {/* skills */}
+      <section className="section" style={{ paddingTop: 0 }} aria-label="Skills">
+        <AnimatedSplit tagName="h2" className="bracket-label">
+          <span className="bracket">[</span>what i work with
+          <span className="bracket">]</span>
+        </AnimatedSplit>
+        <Reveal className="info-rows">
+          {skills.map((group) => (
+            <div className="info-row" key={group.label}>
+              <span className="info-row-label">{group.label}</span>
+              <span className="info-row-value">
+                {group.items.map((item, i) => (
+                  <span key={item}>
+                    {item}
+                    {i < group.items.length - 1 && <span className="sep">/</span>}
+                  </span>
+                ))}
               </span>
-            </h1>
-            <div ref={contentRef} className="mt-6 text-lg prose space-y-7 dark:prose-invert text-zinc-600 dark:text-zinc-400">
-              <p>
-              Deeply passionate about coding and creating innovative web solutions. With a dedicated focus on honing my skills, I strive to contribute meaningfully to the world of web development.
-              </p>
-
-              <h2>Technical Skills</h2>
-
-              <p>
-                <b>Back-end:</b> JAVA | Spring Boot | J2EE | Spring Core | JPA | JUnit
-              </p>
-              <p>
-                <b>Front-end:</b> HTML | TailwindCSS | TypeScript | ReactJs | NextJs | Angular
-              </p>
-              <p>
-                <b>DevOps:</b> DigitalOcean | Docker | Jenkins | Github Actions | Maven
-              </p>
-              <p>
-                <b>Databases:</b> MySQL | PostgreSQL | Oracle | MongoDB
-              </p>
-              <p>
-                <b>Tools:</b> Drawio UML | Git | GitHub | Jira | Trello
-              </p>
-              <p>
-                <b>Methodologies:</b> Agile | Scrum
-              </p>
-              <p>
-                <b>UI/UX:</b> Figma | Adobe Photoshop | Adobe Illustrator
-              </p>
-
-              <h2>Areas of Interest</h2>
-              <p>
-                Software Architecture | Clean Code Practices | Continuous Learning
-              </p>
             </div>
+          ))}
+          <div className="info-row">
+            <span className="info-row-label">interests</span>
+            <span className="info-row-value">
+              {interests.map((item, i) => (
+                <span key={item}>
+                  {item}
+                  {i < interests.length - 1 && <span className="sep">/</span>}
+                </span>
+              ))}
+            </span>
           </div>
-          <div className="lg:pl-20">
-            <ul ref={socialRef} role="list">
-              <SocialLink href={siteMeta.author.instagram} icon={InstagramIcon} className="mt-4">
-                Follow on Instagram
-              </SocialLink>
-              <SocialLink href={siteMeta.author.github} icon={GitHubIcon} className="mt-4">
-                Follow on GitHub
-              </SocialLink>
-              <SocialLink href={siteMeta.author.linkedin} icon={LinkedInIcon} className="mt-4">
-                Follow on LinkedIn
-              </SocialLink>
-              <SocialLink
-                href={`mailto:${siteMeta.author.email}`}
-                icon={MailIcon}
-                className="pt-8 mt-8 border-t border-zinc-100 dark:border-zinc-700/40"
+        </Reveal>
+      </section>
+
+      {/* selected works */}
+      <section
+        className="section"
+        style={{ paddingTop: 0 }}
+        aria-label="Selected works"
+      >
+        <AnimatedSplit tagName="h2" className="bracket-label">
+          <span className="bracket">[</span>selected works
+          <span className="bracket">]</span>
+        </AnimatedSplit>
+        <BlurReveal
+          className="section-desc"
+          text={"a few of the things i've made."}
+        />
+
+        <div className="works-grid">
+          {featured.map((project, i) => (
+            <Reveal key={project.name}>
+              <Link
+                href="/projects"
+                className="project-card"
+                style={{ '--hover-color': project.accent }}
               >
-                {siteMeta.author.email}
-              </SocialLink>
-              
-              <li className="flex mt-4">
-                <a
-                  href="/CV_Daali_Mohammed.pdf"
-                  download
-                  className="relative flex items-center gap-3 px-6 py-3 overflow-hidden text-sm font-semibold transition-all duration-500 rounded-xl group border-2 border-teal-500 dark:border-teal-400 text-teal-600 dark:text-teal-400 hover:text-white dark:hover:text-white"
-                >
-                  <span className="absolute inset-0 w-0 bg-teal-500 dark:bg-teal-400 transition-all duration-500 ease-out group-hover:w-full"></span>
-                  <DownloadIcon className="relative z-10 flex-none w-5 h-5 transition-all duration-500 group-hover:rotate-12 group-hover:scale-110" />
-                  <span className="relative z-10">Download My Resume</span>
-                  <svg className="relative z-10 w-4 h-4 ml-auto transition-transform duration-500 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
+                <SkeletonImage
+                  className="project-media"
+                  src={project.screenshots[0]}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  sizes="(max-width: 700px) 88vw, 44vw"
+                  quality={80}
+                />
+                <div className="project-card-title-line">
+                  <span className="project-card-title">{project.name}</span>
+                  <span className="project-index">
+                    /{String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <span className="project-card-stack">
+                  {project.skills.split('-').slice(0, 3).join(' · ')}
+                </span>
+              </Link>
+            </Reveal>
+          ))}
         </div>
-      </Container>
+
+        <Reveal style={{ marginTop: '4em' }}>
+          <Link href="/projects" className="dot-button">
+            all projects ({projects.length})
+          </Link>
+        </Reveal>
+      </section>
     </>
   )
 }
