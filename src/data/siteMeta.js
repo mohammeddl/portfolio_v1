@@ -16,6 +16,7 @@ const resetclub = '/logos/resetlogo.avif'
 const dakhlaclub = '/logos/LogoDakhla.avif'
 const textCrafter = '/logos/textcrafterlogo.png'
 const serene = '/logos/serene.png'
+const aurelle = '/logos/aurelle.png'
 
 const siteMeta = {
   title: 'Daali Mohammed',
@@ -70,6 +71,23 @@ export const interests = [
 ]
 
 export const projects = [
+  {
+    name: 'Aurelle',
+    description: 'Aurelle is a luxury jewelry store offering an immersive 3D shopping experience with stunning visual effects.',
+    skills: 'NEXTJS - TailwindCSS - GSAP - Three.js - 3D',
+    accent: 'var(--accent-orange)',
+    featured: true,
+    link: {
+      href: 'https://github.com/mohammeddl/jewelry-store',
+      label: 'github.com',
+    },
+    logo: aurelle,
+    screenshots: [
+      '/screens/jewelry1.png',
+      '/screens/jewelry2.png',
+      '/screens/jewelry3.png',
+    ],
+  },
   {
     name: 'TextCrafter',
     description: 'TextCrafter is a website for crafters',
