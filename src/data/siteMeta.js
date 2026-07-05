@@ -78,8 +78,8 @@ export const projects = [
     accent: 'var(--accent-orange)',
     featured: true,
     link: {
-      href: 'https://github.com/mohammeddl/jewelry-store',
-      label: 'github.com',
+      href: 'https://jewelry-store-lime-eight.vercel.app',
+      label: 'jewelry-store-lime-eight.vercel.app',
     },
     logo: aurelle,
     screenshots: [
