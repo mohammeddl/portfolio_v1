@@ -72,6 +72,22 @@ export const interests = [
 
 export const projects = [
   {
+    name: 'BiteBase',
+    description: 'Provide a curated collection of recipes from around the world, helping you discover and master new culinary skills. Our mission is to make cooking accessible, enjoyable, and inspiring for everyone with AI for recipes.',
+    skills: 'NEXTJS - GSAP - TailwindCSS - DOCKER',
+    accent: 'var(--accent-orange)',
+    featured: true,
+    link: {
+      href: 'https://bitebase.me/',
+      label: 'bitebase.me',
+    },
+    screenshots: [
+      '/screens/bitebase1.png',
+      '/screens/bitebase2.png',
+      '/screens/bitebase3.png',
+    ],
+  },
+  {
     name: 'Aurelle',
     description: 'Aurelle is a luxury jewelry store offering an immersive 3D shopping experience with stunning visual effects.',
     skills: 'NEXTJS - TailwindCSS - GSAP - Three.js - 3D',
